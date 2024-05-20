@@ -22,7 +22,7 @@ pipeline {
 						echo 'Key Creation'
                         sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
 						echo 'Virtual Private Cloud Creation'
-                        //sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+                        sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
 						echo 'Security Group Creation'
                         //sh 'sudo ansible-playbook /home/ec2-user/playbooks/security-group-creation.yml'
 						echo 'Security Group Outbound Rules Creation'
