@@ -23,7 +23,7 @@ pipeline {
 				sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
 			}
 		}
-		stage(''Virtual Private Cloud Creation') {
+		stage('Virtual Private Cloud Creation') {
 			steps {
 				echo 'Virtual Private Cloud Creation'
 				sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
