@@ -6,6 +6,7 @@ pipeline {
 				echo 'Playbooks Download'
 				sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/'
 				sh 'sudo rm -rf /home/ec2-user/playbooks/'
+				sh 'mkdir /home/ec2-user/playbooks/'
 				sh 'git clone https://github.com/juliocezar84/iac.git'
 				sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/* /home/ec2-user/playbooks'
 			}
