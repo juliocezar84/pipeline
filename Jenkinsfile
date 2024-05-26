@@ -26,6 +26,11 @@ pipeline {
 								echo 'Application Server Provisioning'
 							}
 						}
+						stage('Application Server Configuration'){
+							steps {
+								echo 'Application Server Configuration'
+							}
+						}
 					}
 				}
 				stage('Database Server Provisioning and Configuration'){
