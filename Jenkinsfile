@@ -23,10 +23,10 @@ pipeline{
 					stages{
 						stage('Application Server Provisioning'){
 							steps{
-								echo 'Key Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
+								echo 'Key Pair Creation'
+								sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
 								echo 'Virtual Private Cloud Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+								sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
 								echo 'Security Group Creation'
 								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/security-group-creation.yml'
 								echo 'Security Group Outbound Rules Creation'
@@ -34,7 +34,7 @@ pipeline{
 								echo 'Security Group Inbound Rules Creation'
 								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/security-group-inbound-rules-creation.yml'
 								echo 'EC2 Instance Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+								sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
 							}
 						}
 						stage('Application Server Configuration'){
@@ -56,8 +56,17 @@ pipeline{
 					}
 				}
 				stage('Database Server Provisioning and Configuration'){
-					steps{
-						echo 'Application Server Provisioning and Configuration'
+					stages{
+						stage('Database Server Provisioning'){
+							steps{
+								echo 'Database Server Provisioning'
+							}
+						}
+						stage('Database Server Configuration'){
+							steps{
+								echo 'Database Server Configuration'
+							}
+						}
 					}
 				}
 			}
