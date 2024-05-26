@@ -19,89 +19,91 @@ pipeline {
 		}
 		stage('Provisioning and Configuration'){
 			parallel{
-				stage('Application Server Provisioning and Configuration'){
-					stages{
-						stage('Application Server Provisioning'){
-							stage('Key Creation') {
-								steps {
-									echo 'Key Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
+				stages{
+					stage('Application Server Provisioning and Configuration'){
+						stages{
+							stage('Application Server Provisioning'){
+								stage('Key Creation') {
+									steps {
+										echo 'Key Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
+									}
+								}
+								stage('Virtual Private Cloud Creation') {
+									steps {
+										echo 'Virtual Private Cloud Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+									}
+								}
+								stage('EC2 Instance Creation') {
+									steps {
+										echo 'EC2 Instance Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+									}
 								}
 							}
-							stage('Virtual Private Cloud Creation') {
-								steps {
-									echo 'Virtual Private Cloud Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+							stage('Application Server Configuration'){
+								stage('Key Creation') {
+									steps {
+										echo 'Key Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
+									}
 								}
-							}
-							stage('EC2 Instance Creation') {
-								steps {
-									echo 'EC2 Instance Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+								stage('Virtual Private Cloud Creation') {
+									steps {
+										echo 'Virtual Private Cloud Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+									}
 								}
-							}
-						}
-						stage('Application Server Configuration'){
-							stage('Key Creation') {
-								steps {
-									echo 'Key Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
-								}
-							}
-							stage('Virtual Private Cloud Creation') {
-								steps {
-									echo 'Virtual Private Cloud Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
-								}
-							}
-							stage('EC2 Instance Creation') {
-								steps {
-									echo 'EC2 Instance Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+								stage('EC2 Instance Creation') {
+									steps {
+										echo 'EC2 Instance Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+									}
 								}
 							}
 						}
 					}
-				}
-				stage('Database Server Provisioning and Configuration'){
-					stages{
-						stage('Database Server Provisioning'){
-							stage('Key Creation') {
-								steps {
-									echo 'Key Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
+					stage('Database Server Provisioning and Configuration'){
+						stages{
+							stage('Database Server Provisioning'){
+								stage('Key Creation') {
+									steps {
+										echo 'Key Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
+									}
+								}
+								stage('Virtual Private Cloud Creation') {
+									steps {
+										echo 'Virtual Private Cloud Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+									}
+								}
+								stage('EC2 Instance Creation') {
+									steps {
+										echo 'EC2 Instance Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+									}
 								}
 							}
-							stage('Virtual Private Cloud Creation') {
-								steps {
-									echo 'Virtual Private Cloud Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+							stage('Database Server Configuration'){
+								stage('Key Creation') {
+									steps {
+										echo 'Key Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
+									}
 								}
-							}
-							stage('EC2 Instance Creation') {
-								steps {
-									echo 'EC2 Instance Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+								stage('Virtual Private Cloud Creation') {
+									steps {
+										echo 'Virtual Private Cloud Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
+									}
 								}
-							}
-						}
-						stage('Database Server Configuration'){
-							stage('Key Creation') {
-								steps {
-									echo 'Key Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
-								}
-							}
-							stage('Virtual Private Cloud Creation') {
-								steps {
-									echo 'Virtual Private Cloud Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
-								}
-							}
-							stage('EC2 Instance Creation') {
-								steps {
-									echo 'EC2 Instance Creation'
-									//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+								stage('EC2 Instance Creation') {
+									steps {
+										echo 'EC2 Instance Creation'
+										//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+									}
 								}
 							}
 						}
