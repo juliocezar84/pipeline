@@ -22,8 +22,12 @@ pipeline {
 				stage('Application Server Provisioning and Configuration'){
 					stages{
 						stage('Application Server Provisioning'){
-							steps {
-								echo 'Application Server Provisioning'
+							stages{
+								stage('Key Pair Creation'){
+									steps {
+										echo 'Key Pair Creation'
+									}
+								}
 							}
 						}
 						stage('Application Server Configuration'){
