@@ -20,8 +20,12 @@ pipeline {
 		stage('Provisioning and Configuration'){
 			parallel{
 				stage('Application Server Provisioning and Configuration'){
-					steps {
-						echo 'Application Server Provisioning and Configuration'
+					stages{
+						stage('Application Server Provisioning'){
+							steps {
+								echo 'Application Server Provisioning'
+							}
+						}
 					}
 				}
 				stage('Database Server Provisioning and Configuration'){
