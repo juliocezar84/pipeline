@@ -4,11 +4,11 @@ pipeline {
 		stage('Playbooks Download'){
 			steps{
 				echo 'Playbooks Download'
-				sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-Provisioninging-and-configuration/iac/'
+				sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioninging-and-configuration/iac/'
 				sh 'sudo rm -rf /home/ec2-user/playbooks/'
 				sh 'sudo mkdir /home/ec2-user/playbooks/'
 				sh 'git clone https://github.com/juliocezar84/iac.git'
-				sh 'sudo mv /var/lib/jenkins/workspace/environment-Provisioninging-and-configuration/iac/* /home/ec2-user/playbooks'
+				sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioninging-and-configuration/iac/* /home/ec2-user/playbooks'
 			}
 		}
 		stage('Playbooks Validation') {
