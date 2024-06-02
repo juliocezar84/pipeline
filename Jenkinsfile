@@ -47,7 +47,7 @@ pipeline{
 						stage('Application Server Configuration'){
 							steps{
 								echo 'Apache Instalation'
-								sh 'sudo ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'
+								sh 'sudo ansible-playbook /home/jenkins/playbooks/apache-instalation.yml --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'
 							}
 						}
             stage('Code Deploy'){
