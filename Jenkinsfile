@@ -50,14 +50,6 @@ pipeline{
 								sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'"
 							}
 						}
-            stage('Code Deploy'){
-              steps{
-								echo 'Code Download'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'
-                echo 'Code Deploy'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'
-							}
-            }
 					}
 				}
 				stage('Database Server Provisioning and Configuration'){
@@ -76,5 +68,16 @@ pipeline{
 				}
 			}
 		}
+    stage('Code Deploy'){
+      steps{
+				echo 'Code Download'
+				//sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/'
+				//sh 'sudo rm -rf /home/jenkins/playbooks/'
+				//sh 'sudo mkdir /home/jenkins/playbooks/'
+				//sh 'git clone https://github.com/juliocezar84/iac.git'
+				//sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/* /home/jenkins/playbooks'
+        //echo 'Code Download'
+      }
+    }
 	}
 }
