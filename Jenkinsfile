@@ -37,20 +37,15 @@ pipeline{
 								sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
 							}
 						}
+            stage('Application Server Connection Test'){
+                echo 'Connection Test'
+								sh 'ansible application_server -m ping --private-key key-webapplication-prd-useast1-001.pem'
+            
+            }
 						stage('Application Server Configuration'){
 							steps{
-								echo 'Key Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/key-pair-creation.yml'
-								echo 'Virtual Private Cloud Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/virtual-private-cloud-creation.yml'
-								echo 'Security Group Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/security-group-creation.yml'
-								echo 'Security Group Outbound Rules Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/security-group-outbound-rules-creation.yml'
-								echo 'Security Group Inbound Rules Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/security-group-inbound-rules-creation.yml'
-								echo 'EC2 Instance Creation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/ec2-instance-creation.yml'
+								echo 'Apache Instalation'
+								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/apache-instalation.yml'
 							}
 						}
 					}
