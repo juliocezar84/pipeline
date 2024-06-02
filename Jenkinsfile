@@ -24,7 +24,7 @@ pipeline{
 						stage('Application Server Provisioning'){
 							steps{
 								echo 'Key Pair Creation'
-								sh 'ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+								sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
 								echo 'Virtual Private Cloud Creation'
 								sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'
 								echo 'Security Group Creation'
