@@ -40,7 +40,7 @@ pipeline{
             stage('Application Server Connection Test'){
               steps{
                 echo 'Connection Test'
-								sh "sudo runuser -l ec2-user -c \'ansible application_server -m ping --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem\'"
+								sh "sudo runuser -l ec2-user -c 'ansible application_server -m ping --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'"
               }
             }
 						stage('Application Server Configuration'){
