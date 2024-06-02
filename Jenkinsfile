@@ -46,7 +46,7 @@ pipeline{
 						stage('Application Server Configuration'){
 							steps{
 								echo 'Apache Instalation'
-								//sh 'sudo ansible-playbook /home/ec2-user/playbooks/apache-instalation.yml'
+								sh 'sudo ansible-playbook /home/ec2-user/playbooks/apache-instalation.yml'
 							}
 						}
             stage('Code Deploy'){
