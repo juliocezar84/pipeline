@@ -40,7 +40,7 @@ pipeline{
             stage('Application Server Connection Test'){
               steps{
                 echo 'Connection Test'
-                "sudo runuser -l ec2-user -c 'ansible application_server -m ping'"
+                sh "sudo runuser -l ec2-user -c 'ansible application_server -m ping'"
 								//"sudo runuser -l ec2-user -c 'ansible application_server -m ping --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'"
                 //sh 'ansible application_server -m ping --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'
               }
@@ -73,11 +73,11 @@ pipeline{
     stage('Code Download'){
       steps{
 				echo 'Code Download'
-				//sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/'
-				//sh 'sudo rm -rf /home/jenkins/code/'
-				//sh 'sudo mkdir /home/jenkins/code/'
-				//sh 'git clone https://github.com/juliocezar84/code.git'
-				//sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/* /home/jenkins/code'
+				sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/'
+				sh 'sudo rm -rf /home/jenkins/code/'
+				sh 'sudo mkdir /home/jenkins/code/'
+				sh 'git clone https://github.com/juliocezar84/code.git'
+				sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/* /home/jenkins/code'
       }
     }
     stage('Code Deploy'){
