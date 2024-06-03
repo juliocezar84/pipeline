@@ -70,16 +70,21 @@ pipeline{
 				}
 			}
 		}
-    stage('Code Deploy'){
+    stage('Code Download'){
       steps{
 				echo 'Code Download'
-				//sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/'
-				//sh 'sudo rm -rf /home/jenkins/playbooks/'
-				//sh 'sudo mkdir /home/jenkins/playbooks/'
-				//sh 'git clone https://github.com/juliocezar84/iac.git'
-				//sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/* /home/jenkins/playbooks'
-        //echo 'Code Download'
+				//sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/'
+				//sh 'sudo rm -rf /home/jenkins/code/'
+				//sh 'sudo mkdir /home/jenkins/code/'
+				//sh 'git clone https://github.com/juliocezar84/code.git'
+				//sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/* /home/jenkins/code'
       }
     }
+    stage('Code Deploy'){
+      steps{
+				echo 'Code Deploy'
+        sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/code-deploy.yml'"
+      }
+    }    
 	}
 }
