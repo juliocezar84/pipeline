@@ -24,18 +24,17 @@ pipeline{
 						stage('Application Server Provisioning'){
 							steps{
 								echo 'Key Pair Creation'
-                sh "sudo runuser -l root -c 'ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'"
-								//sh 'ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+								sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
 								echo 'Virtual Private Cloud Creation'
-								sh 'ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'
+								sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'
 								echo 'Security Group Creation'
-								//sh 'ansible-playbook /home/jenkins/playbooks/security-group-creation.yml'
+								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-creation.yml'
 								echo 'Security Group Outbound Rules Creation'
-								//sh 'ansible-playbook /home/jenkins/playbooks/security-group-outbound-rules-creation.yml'
+								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-outbound-rules-creation.yml'
 								echo 'Security Group Inbound Rules Creation'
-								//sh 'ansible-playbook /home/jenkins/playbooks/security-group-inbound-rules-creation.yml'
+								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-inbound-rules-creation.yml'
 								echo 'EC2 Instance Creation'
-								sh 'ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
+								sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
 							}
 						}
             stage('Application Server Connection Test'){
