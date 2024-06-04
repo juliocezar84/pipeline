@@ -4,7 +4,7 @@ pipeline{
 		stage('Playbooks Download'){
 			steps{
 				echo 'Playbooks Download'
-				sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/'
+				sh 'rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/iac/'
 				sh 'sudo rm -rf /home/jenkins/playbooks/'
 				sh 'sudo mkdir /home/jenkins/playbooks/'
 				sh 'git clone https://github.com/juliocezar84/iac.git'
