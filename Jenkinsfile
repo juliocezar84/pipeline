@@ -27,6 +27,8 @@ pipeline{
 								sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
 								echo 'Virtual Private Cloud Creation'
 								sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'
+								echo 'Subnet Creation'
+								//sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-creation.yml'                
 								echo 'Security Group Creation'
 								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-creation.yml'
 								echo 'Security Group Outbound Rules Creation'
