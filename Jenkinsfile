@@ -35,6 +35,8 @@ pipeline{
 								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-inbound-rules-creation.yml'
 								echo 'EC2 Instance Creation'
 								sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
+                echo 'Fix'
+                sh 'sudo ansible-playbook /home/jenkins/playbooks/fix.yml'
 							}
 						}
             stage('Application Server Connection Test'){
