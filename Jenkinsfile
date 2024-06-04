@@ -42,16 +42,13 @@ pipeline{
             stage('Application Server Connection Test'){
               steps{
                 echo 'Connection Test'
-                sh "sudo runuser -l ec2-user -c 'ansible application_server -m ping'"
-								//"sudo runuser -l ec2-user -c 'ansible application_server -m ping --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'"
-                //sh 'ansible application_server -m ping --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'
+                sh "sudo ansible application_server -m ping"
               }
             }
 						stage('Application Server Configuration'){
 							steps{
 								echo 'Apache Instalation'
-								//sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml --private-key /home/jenkins/key-webapplication-prd-useast1-001.pem'"
-                sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'"
+                sh "sudo ansible-playbook /home/jenkins/playbooks/apache-instalation.yml"
 							}
 						}
 					}
@@ -85,7 +82,7 @@ pipeline{
     stage('Code Deploy'){
       steps{
 				echo 'Code Deploy'
-        sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/code-deploy.yml'"
+        sh "sudo ansible-playbook /home/jenkins/playbooks/code-deploy.yml"
       }
     }    
 	}
