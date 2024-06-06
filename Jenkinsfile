@@ -58,7 +58,7 @@ pipeline{
 						stage('Database Server Provisioning'){
 							steps{
 								echo 'Database Server Provisioning'
-                sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
+                sh 'sudo ansible-playbook /home/jenkins/playbooks/rds-instance-creation.yml'
 							}
 						}
 						stage('Database Server Configuration'){
