@@ -17,6 +17,22 @@ pipeline{
 				sh 'sudo ls /home/jenkins/playbooks/ | while read filename; do sudo ansible-playbook /home/jenkins/playbooks/$filename --syntax-check; done'
 			}
 		}
+		stage('Prerequesites Provisioning'){
+			stage('Virtual Private Cloud Creation'){
+			}
+			stage('Subnets Creation'){
+			}
+			stage('Internet Gateway Creation'){
+			}
+			stage('Route Table Creation'){
+			}
+			stage('Security Group Creation'){
+			}
+			stage('Load Balancer Creation'){
+			}
+			stage('Auto Scaling Creation'){
+			}
+		}
 		stage('Provisioning and Configuration'){
 			parallel{
 				stage('Application Server Provisioning and Configuration'){
