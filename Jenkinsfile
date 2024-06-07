@@ -50,7 +50,6 @@ pipeline{
         }
         stage('Key Pair Creation'){
           steps{
-            echo 'TODO'
             sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
           }
         }        
@@ -120,7 +119,7 @@ pipeline{
     stage('Code Deploy'){
       steps{
 				echo 'Code Deploy'
-        //sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/code-deploy.yml'"
+        sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/code-deploy.yml'"
       }
     }    
 	}
