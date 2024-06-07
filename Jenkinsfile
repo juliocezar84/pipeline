@@ -26,30 +26,37 @@ pipeline{
 			}
 			stage('Subnets AZ A Creation'){
         steps{
+          echo 'Subnets AZ A Creation'
         }
 			}
 			stage('Subnets AZ B Creation'){
         steps{
+          echo 'Subnets AZ B Creation'
         }
 			}      
 			stage('Internet Gateway Creation'){
         steps{
+          echo '1'
         }
 			}
 			stage('Route Table Creation'){
         steps{
+          echo '2'
         }
 			}
 			stage('Security Group Creation'){
         steps{
+          echo '3'
         }
 			}
 			stage('Load Balancer Creation'){
         steps{
+          echo '4'
         }
 			}
 			stage('Auto Scaling Creation'){
         steps{
+          echo '5'
         }
 			}
       stage('Key Pair Creation'){
