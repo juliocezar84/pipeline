@@ -22,17 +22,19 @@ pipeline{
         stage('Virtual Private Cloud Creation'){
           steps{
             echo 'Virtual Private Cloud Creation'
-            sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'        
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'
           }
         }
         stage('Subnets AZ A Creation'){
           steps{
             echo 'Subnets AZ A Creation'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-az-a-creation.yml'
           }
         }
         stage('Subnets AZ B Creation'){
           steps{
             echo 'Subnets AZ B Creation'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-az-b-creation.yml'
           }
         }      
         stage('Internet Gateway Creation'){
@@ -63,7 +65,7 @@ pipeline{
         stage('Key Pair Creation'){
           steps{
             echo 'Key Pair Creation'
-            sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+            //sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
           }
         }
       }
@@ -85,19 +87,19 @@ pipeline{
 								//echo 'Security Group Inbound Rules Creation'
 								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-inbound-rules-creation.yml'
 								echo 'EC2 Instance Creation'
-								sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
+								//sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
 							}
 						}
             stage('Application Server Connection Test'){
               steps{
                 echo 'Connection Test'
-                sh "sudo runuser -l ec2-user -c 'ansible application_server -m ping'"
+                //sh "sudo runuser -l ec2-user -c 'ansible application_server -m ping'"
               }
             }
 						stage('Application Server Configuration'){
 							steps{
 								echo 'Apache Instalation'
-                sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'"
+                //sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'"
 							}
 						}
 					}
