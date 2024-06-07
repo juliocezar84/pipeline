@@ -40,7 +40,7 @@ pipeline{
         }
         stage('Route Table Creation'){
           steps{
-            echo '2'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/route-table-creation.yml'
           }
         }
         stage('Security Group Creation'){
@@ -50,12 +50,12 @@ pipeline{
         }
         stage('Load Balancer Creation'){
           steps{
-            echo '4'
+            echo 'TODO'
           }
         }
         stage('Auto Scaling Creation'){
           steps{
-            echo '5'
+            echo 'TODO'
           }
         }
         stage('Key Pair Creation'){
