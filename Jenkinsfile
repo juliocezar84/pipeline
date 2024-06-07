@@ -13,7 +13,6 @@ pipeline{
 		}
 		stage('Playbooks Validation'){
 			steps{
-				echo 'Playbooks Validation'
 				sh 'sudo ls /home/jenkins/playbooks/ | while read filename; do sudo ansible-playbook /home/jenkins/playbooks/$filename --syntax-check; done'
 			}
 		}
@@ -21,25 +20,22 @@ pipeline{
       stages{
         stage('Virtual Private Cloud Creation'){
           steps{
-            echo 'Virtual Private Cloud Creation'
             sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'
           }
         }
         stage('Subnets AZ A Creation'){
           steps{
-            echo 'Subnets AZ A Creation'
             sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-az-a-creation.yml'
           }
         }
         stage('Subnets AZ B Creation'){
           steps{
-            echo 'Subnets AZ B Creation'
             sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-az-b-creation.yml'
           }
         }      
         stage('Internet Gateway Creation'){
           steps{
-            echo '1'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/internet-gateway-creation.yml'
           }
         }
         stage('Route Table Creation'){
