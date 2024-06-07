@@ -19,18 +19,44 @@ pipeline{
 		}
 		stage('Prerequesites Provisioning'){
 			stage('Virtual Private Cloud Creation'){
+        steps{
+          echo 'Virtual Private Cloud Creation'
+					sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'        
+        }
 			}
-			stage('Subnets Creation'){
+			stage('Subnets AZ A Creation'){
+        steps{
+        }
 			}
+			stage('Subnets AZ B Creation'){
+        steps{
+        }
+			}      
 			stage('Internet Gateway Creation'){
+        steps{
+        }
 			}
 			stage('Route Table Creation'){
+        steps{
+        }
 			}
 			stage('Security Group Creation'){
+        steps{
+        }
 			}
 			stage('Load Balancer Creation'){
+        steps{
+        }
 			}
 			stage('Auto Scaling Creation'){
+        steps{
+        }
+			}
+      stage('Key Pair Creation'){
+        steps{
+          echo 'Key Pair Creation'
+          sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+        }
 			}
 		}
 		stage('Provisioning and Configuration'){
@@ -39,17 +65,15 @@ pipeline{
 					stages{
 						stage('Application Server Provisioning'){
 							steps{
-								echo 'Key Pair Creation'
-								sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
-								echo 'Virtual Private Cloud Creation'
-								sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'
-								echo 'Subnet Creation'
-								sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-creation.yml'
-								echo 'Security Group Creation'
+								//echo 'Key Pair Creation'
+								//sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+								//echo 'Subnet Creation'
+								//sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-creation.yml'
+								//echo 'Security Group Creation'
 								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-creation.yml'
-								echo 'Security Group Outbound Rules Creation'
+								//echo 'Security Group Outbound Rules Creation'
 								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-outbound-rules-creation.yml'
-								echo 'Security Group Inbound Rules Creation'
+								//echo 'Security Group Inbound Rules Creation'
 								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-inbound-rules-creation.yml'
 								echo 'EC2 Instance Creation'
 								sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
@@ -74,7 +98,7 @@ pipeline{
 						stage('Database Server Provisioning'){
 							steps{
 								echo 'Database Server Provisioning'
-                sh 'sudo ansible-playbook /home/jenkins/playbooks/rds-instance-creation.yml'
+                //sh 'sudo ansible-playbook /home/jenkins/playbooks/rds-instance-creation.yml'
 							}
 						}
 						stage('Database Server Configuration'){
