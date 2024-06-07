@@ -51,7 +51,7 @@ pipeline{
         stage('Key Pair Creation'){
           steps{
             echo 'TODO'
-            //sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
           }
         }        
         stage('Load Balancer Creation'){
@@ -72,30 +72,20 @@ pipeline{
 					stages{
 						stage('Application Server Provisioning'){
 							steps{
-								//echo 'Key Pair Creation'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
-								//echo 'Subnet Creation'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/subnet-creation.yml'
-								//echo 'Security Group Creation'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-creation.yml'
-								//echo 'Security Group Outbound Rules Creation'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-outbound-rules-creation.yml'
-								//echo 'Security Group Inbound Rules Creation'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-inbound-rules-creation.yml'
 								echo 'EC2 Instance Creation'
-								//sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
+								sh 'sudo ansible-playbook /home/jenkins/playbooks/ec2-instance-creation.yml'
 							}
 						}
             stage('Application Server Connection Test'){
               steps{
                 echo 'Connection Test'
-                //sh "sudo runuser -l ec2-user -c 'ansible application_server -m ping'"
+                sh "sudo runuser -l ec2-user -c 'ansible application_server -m ping'"
               }
             }
 						stage('Application Server Configuration'){
 							steps{
 								echo 'Apache Instalation'
-                //sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'"
+                sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'"
 							}
 						}
 					}
