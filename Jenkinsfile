@@ -18,53 +18,55 @@ pipeline{
 			}
 		}
 		stage('Prerequesites Provisioning'){
-			stage('Virtual Private Cloud Creation'){
-        steps{
-          echo 'Virtual Private Cloud Creation'
-					sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'        
+      stages{
+        stage('Virtual Private Cloud Creation'){
+          steps{
+            echo 'Virtual Private Cloud Creation'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/virtual-private-cloud-creation.yml'        
+          }
         }
-			}
-			stage('Subnets AZ A Creation'){
-        steps{
-          echo 'Subnets AZ A Creation'
+        stage('Subnets AZ A Creation'){
+          steps{
+            echo 'Subnets AZ A Creation'
+          }
         }
-			}
-			stage('Subnets AZ B Creation'){
-        steps{
-          echo 'Subnets AZ B Creation'
+        stage('Subnets AZ B Creation'){
+          steps{
+            echo 'Subnets AZ B Creation'
+          }
+        }      
+        stage('Internet Gateway Creation'){
+          steps{
+            echo '1'
+          }
         }
-			}      
-			stage('Internet Gateway Creation'){
-        steps{
-          echo '1'
+        stage('Route Table Creation'){
+          steps{
+            echo '2'
+          }
         }
-			}
-			stage('Route Table Creation'){
-        steps{
-          echo '2'
+        stage('Security Group Creation'){
+          steps{
+            echo '3'
+          }
         }
-			}
-			stage('Security Group Creation'){
-        steps{
-          echo '3'
+        stage('Load Balancer Creation'){
+          steps{
+            echo '4'
+          }
         }
-			}
-			stage('Load Balancer Creation'){
-        steps{
-          echo '4'
+        stage('Auto Scaling Creation'){
+          steps{
+            echo '5'
+          }
         }
-			}
-			stage('Auto Scaling Creation'){
-        steps{
-          echo '5'
+        stage('Key Pair Creation'){
+          steps{
+            echo 'Key Pair Creation'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+          }
         }
-			}
-      stage('Key Pair Creation'){
-        steps{
-          echo 'Key Pair Creation'
-          sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
-        }
-			}
+      }
 		}
 		stage('Provisioning and Configuration'){
 			parallel{
