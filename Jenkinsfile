@@ -45,9 +45,14 @@ pipeline{
         }
         stage('Security Group Creation'){
           steps{
-            echo '3'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/security-group-creation.yml'
           }
         }
+        stage('Key Pair Creation'){
+          steps{
+            //sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
+          }
+        }        
         stage('Load Balancer Creation'){
           steps{
             echo 'TODO'
@@ -56,12 +61,6 @@ pipeline{
         stage('Auto Scaling Creation'){
           steps{
             echo 'TODO'
-          }
-        }
-        stage('Key Pair Creation'){
-          steps{
-            echo 'Key Pair Creation'
-            //sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
           }
         }
       }
