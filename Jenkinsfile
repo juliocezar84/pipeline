@@ -50,6 +50,7 @@ pipeline{
         }
         stage('Key Pair Creation'){
           steps{
+            echo 'TODO'
             //sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
           }
         }        
