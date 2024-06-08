@@ -89,21 +89,12 @@ pipeline{
 						}
 					}
 				}
-				stage('Database Server Provisioning and Configuration'){
-					stages{
-						stage('Database Server Provisioning'){
-							steps{
-								echo 'Database Server Provisioning'
-                //sh 'sudo ansible-playbook /home/jenkins/playbooks/rds-instance-creation.yml'
-							}
-						}
-						stage('Database Server Configuration'){
-							steps{
-								echo 'Database Server Configuration'
-							}
-						}
-					}
-				}
+        stage('Database Server Provisioning'){
+          steps{
+            echo 'Database Server Provisioning'
+            sh 'sudo ansible-playbook /home/jenkins/playbooks/rds-instance-creation.yml'
+          }
+        }
 			}
 		}
     stage('Code Download'){
