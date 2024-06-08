@@ -52,16 +52,6 @@ pipeline{
           steps{
             sh 'sudo ansible-playbook /home/jenkins/playbooks/key-pair-creation.yml'
           }
-        }        
-        stage('Load Balancer Creation'){
-          steps{
-            echo 'TODO'
-          }
-        }
-        stage('Auto Scaling Creation'){
-          steps{
-            echo 'TODO'
-          }
         }
       }
 		}
@@ -119,5 +109,15 @@ pipeline{
 				sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/* /home/jenkins/code'
       }
     }*/
+    stage('Load Balancer Creation'){
+      steps{
+        echo 'TODO'
+      }
+    }
+    stage('Auto Scaling Creation'){
+      steps{
+        echo 'TODO'
+      }
+    }    
 	}
 }
