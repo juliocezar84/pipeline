@@ -92,7 +92,13 @@ pipeline{
 								echo 'Git Instalation'
                 sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/git-instalation.yml'"
 							}
-						}                        
+						}
+            stage('Code Deploy'){
+              steps{
+                echo 'Code Deploy'
+                sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/code-deploy.yml'"
+              }
+            }
 					}
 				}
         stage('Database Server Provisioning'){
@@ -103,7 +109,7 @@ pipeline{
         }
 			}
 		}
-    stage('Code Download'){
+    /*stage('Code Download'){
       steps{
 				echo 'Code Download'
 				sh 'sudo rm -rf /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/'
@@ -112,12 +118,6 @@ pipeline{
 				sh 'git clone https://github.com/juliocezar84/code.git'
 				sh 'sudo mv /var/lib/jenkins/workspace/environment-provisioning-and-configuration/code/* /home/jenkins/code'
       }
-    }
-    stage('Code Deploy'){
-      steps{
-				echo 'Code Deploy'
-        sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/code-deploy.yml'"
-      }
-    }    
+    }*/
 	}
 }
