@@ -87,12 +87,18 @@ pipeline{
                 sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/apache-instalation.yml'"
 							}
 						}
+						stage('Git Configuration'){
+							steps{
+								echo 'Git Instalation'
+                sh "sudo runuser -l ec2-user -c 'ansible-playbook /home/jenkins/playbooks/git-instalation.yml'"
+							}
+						}                        
 					}
 				}
         stage('Database Server Provisioning'){
           steps{
             echo 'Database Server Provisioning'
-            sh 'sudo ansible-playbook /home/jenkins/playbooks/rds-instance-creation.yml'
+            //sh 'sudo ansible-playbook /home/jenkins/playbooks/rds-instance-creation.yml'
           }
         }
 			}
