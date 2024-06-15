@@ -13,7 +13,7 @@ pipeline{
 		}
 		stage('Playbooks Validation'){
 			steps{
-				sh 'sudo ls /home/jenkins/playbooks/ | while read filename; do sudo ansible-playbook /home/jenkins/playbooks/$filename --syntax-check; done'
+				sh 'sudo ls /home/jenkins/playbooks/*.yml | while read filename; do sudo ansible-playbook /home/jenkins/playbooks/$filename --syntax-check; done'
 			}
 		}
 		stage('Prerequesites Provisioning'){
