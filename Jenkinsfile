@@ -16,6 +16,11 @@ pipeline{
 				sh 'sudo ls /home/jenkins/playbooks/*.yml | while read filename; do sudo ansible-playbook /home/jenkins/playbooks/$filename --syntax-check; done'
 			}
 		}
+    stage('Webhoo Configuration'){
+      steps{
+        sh 'sudo ansible-playbook /home/jenkins/playbooks/webhook-configuration.yml'
+      }
+    }
 		stage('Prerequesites Provisioning'){
       stages{
         stage('Virtual Private Cloud Creation'){
