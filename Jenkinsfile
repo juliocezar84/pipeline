@@ -16,7 +16,7 @@ pipeline{
 				sh 'sudo ls /home/jenkins/playbooks/*.yml | while read filename; do sudo ansible-playbook $filename --syntax-check; done'
 			}
 		}
-    stage('Webhoo Configuration'){
+    stage('Webhook Configuration'){
       steps{
         sh 'sudo ansible-playbook /home/jenkins/playbooks/webhook-configuration.yml'
       }
